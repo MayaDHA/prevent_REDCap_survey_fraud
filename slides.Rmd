@@ -59,12 +59,12 @@ colorText <- function(x, color){
 # Strategies Overview
 1. Survey Design
   + reCAPTCHA and nedCAPTCHA setup
-  + Instruments: field validation & @RANDOMORDER action tag
+  + Instruments: validation, action tags, inverse/open eligibility questions
 1. Consent & Measures
   + Consent language
   + Conscientious Responder Scale (attention checks)
 1. REDCap Monitoring
-  + Hidden trap fields
+  + Trap fields (contradiction and hidden fields)
   + QA forms
   + Survey completion times & data quality rules
   + Response limits
@@ -99,14 +99,23 @@ nedCAPTCHA
   + Use .red[email validation]
   + Use .red[phone number validation]
   + Ask for first and last name in .red[separate] fields
-
----
-# Survey Design
 + Use the `@RANDOMORDER` action tag
   + Scrambles answer choices to deal with people/bots who always choose the .red[same response to every question].
 .center[
   ![:scale 55%](images/randomorder_ex.png)]
-  
+
+---
+# Survey Design
+
++ Invert eligibility fields
+  + Example Criteria:
+    1. Need foreign-born individuals: Were you born in the US? Yes/No
+    1. Need PLWHIV: Are you currently NOT living with HIV? Yes/No
+
++ Open-ended questions
+  + Example Criteria:
+    1. Need Miami-based people: What county do you live in?
+    1. Specific age requirements: How old are you (in years)?
 
 ---
 # Consent & Measures
@@ -124,6 +133,17 @@ Use the **[Conscientious Responder Scale](https://doi.org/10.1177/21582440145459
   2. Please answer this question by choosing option number two, “disagree”
 
 .red[State that some questions are for fraud detection]
+
+---
+# REDCap Monitoring
+
+**Create fields to catch contradictions**
++ Ideal for multi-step surveys (Prescreen -> Full Screen)
++ Requires 2 questions with similar theme or confirmation
+  + City and ZIP code
+  + Age (self-report) DOB
+  + County and city
+  + Ask questions twice on separate instruments
 
 ---
 # REDCap Monitoring
